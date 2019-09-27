@@ -12,29 +12,40 @@ class SiameseNet(nn.Module):
         super(SiameseNet, self).__init__()
 
         self.model = nn.Sequential(
+           #第一层
             nn.Conv2d(3, 64, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+            #第二层
             nn.Conv2d(64, 64, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False),
+           #第三层
             nn.Conv2d(64, 128, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+            #第四层
             nn.Conv2d(128, 128, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False),            
+           #第五层
             nn.Conv2d(128, 256, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+          #第六层
             nn.Conv2d(256, 256, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+           #第七层
             nn.Conv2d(256, 256, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2, padding=0, dilation=1, ceil_mode=False),            
+           #第八层
             nn.Conv2d(256, 512, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+          #第九层
             nn.Conv2d(512, 512, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+           #第十层
             nn.Conv2d(512, 512, kernel_size=3, stride=1),
             nn.ReLU(inplace=True),
+          #第十一层
             nn.Conv2d(512, 256, kernel_size=1, stride=1),
         )
         self.bn_adjust = nn.BatchNorm2d(1)
